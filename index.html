@@ -318,6 +318,34 @@
 
         .project-content {
             padding: 20px;
+            position: relative;
+        }
+
+        /* GitHub Button Styles */
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .github-btn i {
+            margin-right: 8px;
+        }
+
+        .github-btn:hover {
+            background: #3498db;
+            color: black;
+            font-weight: 600;
+            transform: translateY(-2px);
         }
 
         /* Contact */
@@ -750,6 +778,9 @@
                             <li>Implemented user authentication, cart management, and secure checkout</li>
                             <li>Integrated real-time backend synchronization</li>
                         </ul>
+                        <a href="#" class="github-btn">
+                            <i class="fab fa-github"></i> View Repository
+                        </a>
                     </div>
                 </div>
                 <div class="project-card">
@@ -757,9 +788,13 @@
                         <h3>Cat vs. Dog Classification Model</h3>
                         <p><em>September 2024</em></p>
                         <ul>
+                            <li>Using Deep learning Model CNN to clasify image is a dog or a cat</li>
                             <li>Trained a CNN model to classify images with 95% accuracy using TensorFlow</li>
                             <li>Preprocessed Kaggle dataset and implemented data augmentation</li>
                         </ul>
+                        <a href="#" class="github-btn">
+                            <i class="fab fa-github"></i> View Repository
+                        </a>
                     </div>
                 </div>
                 <div class="project-card">
@@ -767,9 +802,13 @@
                         <h3>Organic Product Website</h3>
                         <p><em>May 2025 – June 2025</em></p>
                         <ul>
-                            <li>Developed a full-stack organic product platform with dynamic backend</li>
+                            <li>Build a Complete Organic Website Using HTML,CSS,JavaScript,Bootstrap</li>
+                            <li>Developed a full-stack organic product platform with dynamic PHP backend</li>
                             <li>Implemented user management, order tracking, and real-time updates</li>
                         </ul>
+                        <a href="https://github.com/kunal-kashyap635/organic" target="_blank" class="github-btn">
+                            <i class="fab fa-github"></i> View Repository
+                        </a>
                     </div>
                 </div>
             </div>
@@ -882,7 +921,7 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                hamburger.innerHTML = '<i class="fas fa-bars></i>';
             });
         });
 
