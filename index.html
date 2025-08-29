@@ -348,6 +348,189 @@
             transform: translateY(-2px);
         }
 
+        /* Certificates Section Styles */
+        #certificates {
+            background-color: #f9f9f9;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .certificate-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .certificate-img {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .certificate-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .certificate-item:hover .certificate-overlay {
+            opacity: 1;
+        }
+
+        .certificate-item:hover .certificate-thumbnail {
+            transform: scale(1.1);
+        }
+
+        .view-certificate-btn {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .view-certificate-btn:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .coming-soon .certificate-overlay {
+            opacity: 1;
+            background-color: rgba(44, 62, 80, 0.5);
+        }
+
+        .coming-soon-text {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .certificate-content {
+            padding: 20px;
+        }
+
+        .certificate-content h3 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .certificate-content p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .certificate-date {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+            animation: modalFadeIn 0.3s;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #modal-certificate-img {
+            max-width: 100%;
+            max-height: 500px;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+        }
+
+        .certificate-details {
+            text-align: center;
+        }
+
+        .certificate-details h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .certificate-details p {
+            margin-bottom: 5px;
+            color: #666;
+        }
+
         /* Contact */
         .contact-container {
             display: grid;
@@ -485,13 +668,13 @@
         .form-input-group {
             margin-bottom: 20px;
         }
-        
+
         .form-input-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
         }
-        
+
         .form-input {
             width: 100%;
             padding: 12px 15px;
@@ -500,18 +683,18 @@
             font-size: 16px;
             transition: all 0.3s ease;
         }
-        
+
         .form-input:focus {
             border-color: var(--primary-color);
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
             outline: none;
         }
-        
+
         textarea.form-input {
             min-height: 120px;
             resize: vertical;
         }
-        
+
         .text-center {
             text-align: center;
         }
@@ -631,6 +814,22 @@
 
             section {
                 padding: 60px 0;
+            }
+        }
+
+        /* Responsive Design for Certificates */
+        @media (max-width: 768px) {
+            .certificates-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .modal-body {
+                flex-direction: column;
             }
         }
     </style>
@@ -815,6 +1014,153 @@
         </div>
     </section>
 
+    <!-- Add this to your HTML where you want the certificates section to appear -->
+    <section id="certificates">
+        <div class="container">
+            <h2 class="section-title">Certificates</h2>
+            <div class="certificates-grid">
+                <!-- Certificate Item 1 -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="https://placehold.co/300x200/3498db/ffffff?text=Python+Coder"
+                            alt="Python Coder Certificate" class="certificate-thumbnail">
+                        <div class="certificate-overlay">
+                            <button class="view-certificate-btn" data-certificate="python-coder">View Certificate</button>
+                        </div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Python Coder</h3>
+                        <p>Kaggle</p>
+                        <span class="certificate-date">Earned: 2025</span>
+                    </div>
+                </div>
+
+                <!-- Certificate Item 2 -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="https://placehold.co/300x200/3498db/ffffff?text=SQL+Basic" alt="SQL Basic Certificate"
+                            class="certificate-thumbnail">
+                        <div class="certificate-overlay">
+                            <button class="view-certificate-btn" data-certificate="sql-basic">View Certificate</button>
+                        </div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>SQL (Basic)</h3>
+                        <p>HackerRank</p>
+                        <span class="certificate-date">Earned: 27 Aug, 2025</span>
+                    </div>
+                </div>
+
+                <!-- Certificate Item 3 -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="https://placehold.co/300x200/3498db/ffffff?text=1+Year+on+Kaggle"
+                            alt="1 Year on Kaggle Certificate" class="certificate-thumbnail">
+                        <div class="certificate-overlay">
+                            <button class="view-certificate-btn" data-certificate="kaggle-year">View Certificate</button>
+                        </div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>1 Year on Kaggle</h3>
+                        <p>Kaggle</p>
+                        <span class="certificate-date">Earned: 2025</span>
+                    </div>
+                </div>
+
+                <!-- Certificate Item 4 -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="https://placehold.co/300x200/3498db/ffffff?text=SQL+Intermediate"
+                            alt="SQL Intermediate Certificate" class="certificate-thumbnail">
+                        <div class="certificate-overlay">
+                            <button class="view-certificate-btn" data-certificate="sql-intermediate">View Certificate</button>
+                        </div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>SQL (Intermediate)</h3>
+                        <p>HackerRank</p>
+                        <span class="certificate-date">Earned: 28 Aug, 2025</span>
+                    </div>
+                </div>
+
+                <!-- Certificate Item 5 -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="https://placehold.co/300x200/3498db/ffffff?text=Python+Basic"
+                            alt="Python Basic Certificate" class="certificate-thumbnail">
+                        <div class="certificate-overlay">
+                            <button class="view-certificate-btn" data-certificate="python-basic">View Certificate</button>
+                        </div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Python (Basic)</h3>
+                        <p>HackerRank</p>
+                        <span class="certificate-date">Earned: 27 Aug, 2025</span>
+                    </div>
+                </div>
+
+                <!-- Placeholder for future certificates -->
+                <div class="certificate-item coming-soon">
+                    <div class="certificate-img">
+                        <img src="https://placehold.co/300x200/2c3e50/ecf0f1?text=Coming+Soon" alt="Coming Soon"
+                            class="certificate-thumbnail">
+                        <div class="certificate-overlay">
+                            <span class="coming-soon-text">In Progress</span>
+                        </div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Data Science & AI</h3>
+                        <p>Certificate in progress</p>
+                    </div>
+                </div>
+
+                <div class="certificate-item coming-soon">
+                    <div class="certificate-img">
+                        <img src="https://placehold.co/300x200/2c3e50/ecf0f1?text=Coming+Soon" alt="Coming Soon"
+                            class="certificate-thumbnail">
+                        <div class="certificate-overlay">
+                            <span class="coming-soon-text">In Progress</span>
+                        </div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>React Native</h3>
+                        <p>Certificate in progress</p>
+                    </div>
+                </div>
+
+                <div class="certificate-item coming-soon">
+                    <div class="certificate-img">
+                        <img src="https://placehold.co/300x200/2c3e50/ecf0f1?text=Coming+Soon" alt="Coming Soon"
+                            class="certificate-thumbnail">
+                        <div class="certificate-overlay">
+                            <span class="coming-soon-text">In Progress</span>
+                        </div>
+                    </div>
+                    <div class="certificate-content">
+                        <h3>Web Development</h3>
+                        <p>Certificate in progress</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certificate Modal -->
+        <div id="certificate-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body">
+                    <img id="modal-certificate-img" src="" alt="Certificate">
+                    <div class="certificate-details">
+                        <h3 id="modal-certificate-title"></h3>
+                        <p id="modal-certificate-issuer"></p>
+                        <p id="modal-certificate-date"></p>
+                        <p id="modal-certificate-id"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -847,8 +1193,10 @@
 
                     <h3>Follow Me</h3>
                     <div class="social-links">
-                        <a href="https://github.com/kunal-kashyap635" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/kunal-kashyap-a51384359/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/kunal-kashyap635" target="_blank" class="social-link"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/kunal-kashyap-a51384359/" target="_blank"
+                            class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
 
@@ -956,6 +1304,96 @@
 
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
+        });
+
+        // certificates script
+        const certificates = {
+            'python-coder': {
+                title: 'Python Coder',
+                issuer: 'Kaggle',
+                date: '2025',
+                id: 'Kunal Kashyap@29',
+                image: 'PythonCoder.png'
+            },
+            'sql-basic': {
+                title: 'SQL (Basic)',
+                issuer: 'HackerRank',
+                date: '27 Aug, 2025',
+                id: 'ADC479B59DOC',
+                image: 'sqlbasic.png'
+            },
+            'kaggle-year': {
+                title: '1 Year on Kaggle',
+                issuer: 'Kaggle',
+                date: '2025',
+                id: 'Kunal Kashyap@29',
+                image: '1YearonKaggle.png'
+            },
+            'sql-intermediate': {
+                title: 'SQL (Intermediate)',
+                issuer: 'HackerRank',
+                date: '28 Aug, 2025',
+                id: '0002713EE6A1',
+                image: 'sqlintermediate.png'
+            },
+            'python-basic': {
+                title: 'Python (Basic)',
+                issuer: 'HackerRank',
+                date: '27 Aug, 2025',
+                id: 'CABD90C94673',
+                image: 'pythonbasic.png'
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('certificate-modal');
+        const modalImg = document.getElementById('modal-certificate-img');
+        const modalTitle = document.getElementById('modal-certificate-title');
+        const modalIssuer = document.getElementById('modal-certificate-issuer');
+        const modalDate = document.getElementById('modal-certificate-date');
+        const modalId = document.getElementById('modal-certificate-id');
+        const closeModal = document.querySelector('.close-modal');
+
+        // Add event listeners to view certificate buttons
+        document.querySelectorAll('.view-certificate-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const certId = this.getAttribute('data-certificate');
+                const certificate = certificates[certId];
+
+                if (certificate) {
+                    modalImg.src = certificate.image;
+                    modalImg.alt = certificate.title + ' Certificate';
+                    modalTitle.textContent = certificate.title;
+                    modalIssuer.textContent = 'Issued by: ' + certificate.issuer;
+                    modalDate.textContent = 'Earned on: ' + certificate.date;
+                    modalId.textContent = 'ID: ' + certificate.id;
+
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                }
+            });
+        });
+
+        // Close modal when clicking on X
+        closeModal.addEventListener('click', function () {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Enable scrolling
+        });
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Enable scrolling
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Enable scrolling
+            }
         });
     </script>
 </body>
